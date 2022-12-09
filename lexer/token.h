@@ -33,6 +33,8 @@ namespace lexer {
         int column = 1;
 
         Token(TokenKind k, std::string c, int ln, int col);
+        Token()=default;
+
         std::string to_string() const;
     };
 }
