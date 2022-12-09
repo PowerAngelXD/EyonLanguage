@@ -110,7 +110,7 @@ Token Lexer::makeString() {
     std::string content;
     chk = this->next();
     for (; this->pos < this->source.size(); chk = this->next()) {
-        if (chk == *(-- this->source.end())) {
+        if (chk != '"' && this->pos >= this->source.size() - 1) {
             throw lexer_error::StringUnCloseError(content, this->line, this->column);
         }
 
