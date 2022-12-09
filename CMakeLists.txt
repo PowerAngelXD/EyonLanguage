@@ -3,6 +3,7 @@ project(eyon)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(eyon main.cpp lexer/token.cpp lexer/token.h
-        lexer/lex.cpp lexer/lex.h
-        error/lexer_error.cpp error/lexer_error.h error/error.cpp error/error.h)
+file(GLOB SRC_FILES "main.cpp", "lexer/*.cpp",
+        "parser/asts/*.cpp", "error/*.cpp")
+
+add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES} )
