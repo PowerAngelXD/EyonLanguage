@@ -5,14 +5,20 @@
 #ifndef EYON_NODE_BASE_H
 #define EYON_NODE_BASE_H
 #include "../../lexer/lex.h"
+#include <memory>
+
+#define default_token = lexer::null_token
+#define default_token_node = ast::null_token_node
 
 namespace ast {
+    /// @brief Foundation of all nodes\
+    /// @attention Other nodes must inherit this node to generate an abstract syntax tree
     struct BasicNode {
         BasicNode()=default;
         BasicNode(int ln, int col);
 
         virtual std::string to_string();
-        virtual bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(std::vector<lexer::Token> tg, int curr_pos);
 
         std::tuple<int, int> getLnCol();
     
@@ -21,16 +27,17 @@ namespace ast {
         int column = 0;
     };
 
+    /// @brief The most basic node, which is used to bear the Token
     struct TokenNode: public BasicNode {
-        lexer::Token content;
+        lexer::Token content default_token;
         
         // Inherit the constructor of the parent class
         using BasicNode::BasicNode;
-        TokenNode(lexer::Token c, int ln, int col);
 
         std::string to_string() override;
-        bool is(std::vector<lexer::Token> tg, int curr_pos) override;
+        static bool is(std::vector<lexer::Token> tg, int curr_pos);
     };
+    static TokenNode null_token_node = TokenNode(-1, -1);
 }
 
 #endif // !EYON_NODE_BASE_H

@@ -14,13 +14,11 @@ std::string BasicNode::to_string() {}
 bool BasicNode::is(std::vector<lexer::Token> tg, int curr_pos) {}
 
 std::tuple<int, int> BasicNode::getLnCol() {
-    return std::tuple<int, int>(this->line, this->column);
+    return {this->line, this->column};
 }
 
 // TokenNode
-TokenNode::TokenNode(lexer::Token c, int ln, int col): content(c), BasicNode(ln, col) {}
-
-std::string TokenNode::to_string() { 
+std::string TokenNode::to_string() {
     return "TokenNode: { kind: " + lexer::kind_to_string(this->content.kind) + ", content" + content.content + "}";
 }
 
