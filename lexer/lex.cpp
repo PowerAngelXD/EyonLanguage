@@ -60,7 +60,7 @@ Token Lexer::makeNumber() {
 
 Token Lexer::makeIdentifier() {
     char chk = this->source[this->pos];
-    if (!isdigit(chk)) {}
+    if (!isalpha(chk)) {}
 
     std::string content;
     for(; this->pos < this->source.size(); chk = this->next()) {
