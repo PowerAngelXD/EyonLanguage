@@ -4,8 +4,10 @@
 
 #include "lexer_error.h"
 
+#include <utility>
+
 lexer_error::NotCorrectNumberError::NotCorrectNumberError(std::string src, int line, int col) :
-    ErrorBasic(src,line, col) {}
+    ErrorBasic(std::move(src),line, col) {}
 
 void lexer_error::NotCorrectNumberError::printError() {
     ERROR_HEAD_DISPLAY
@@ -17,7 +19,7 @@ void lexer_error::NotCorrectNumberError::printError() {
 //
 
 lexer_error::StringUnCloseError::StringUnCloseError(std::string src, int ln, int col) :
-    ErrorBasic(src, ln, col) {}
+    ErrorBasic(std::move(src), ln, col) {}
 
 void lexer_error::StringUnCloseError::printError() {
     ERROR_HEAD_DISPLAY
