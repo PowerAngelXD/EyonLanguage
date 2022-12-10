@@ -37,6 +37,7 @@ namespace lexer {
 
         std::string to_string() const;
     };
+    static Token null_token = {TokenKind::NullToken, "NullToken", -1, -1};
 }
 
 #endif //EYON_TOKEN_H
