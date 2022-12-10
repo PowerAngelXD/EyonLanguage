@@ -3,3 +3,5 @@
 build
 cmake-build-debug
 cmake-build-release
+github_key
+github_key.pub
