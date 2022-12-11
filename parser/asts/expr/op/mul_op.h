@@ -4,7 +4,10 @@
 
 #ifndef EYON_MUL_OP_H
 #define EYON_MUL_OP_H
+
 #include "../../node_base.h"
+
+#define default_mul_op_node = null_mul_op_node
 
 namespace ast {
     enum BasicOpKind {
@@ -24,6 +27,7 @@ namespace ast {
         /// @return ast::BasicOpKind
         BasicOpKind getOpKind();
     };
+    static MulOpNode null_mul_op_node = MulOpNode(-1, -1);
 }
 
 #endif //EYON_QUARD_OP_H

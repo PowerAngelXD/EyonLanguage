@@ -4,6 +4,7 @@
 
 #ifndef EYON_PRIM_EXPR_H
 #define EYON_PRIM_EXPR_H
+
 #include "../node_base.h"
 
 #define default_prim_expr_node = ast::null_prim_expr_node
