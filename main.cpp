@@ -10,7 +10,7 @@ int main() {
             std::cout<< tok.to_string() <<std::endl;
         }
     }
-    catch (lexer_error::NotCorrectNumberError e) { e.printError(); }
-    catch (lexer_error::StringUnCloseError e) { e.printError(); }
+    catch (lexer_error::NotCorrectNumberError& e) { e.printError(); }
+    catch (lexer_error::StringUnCloseError& e) { e.printError(); }
     return 0;
 }
