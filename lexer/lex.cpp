@@ -8,7 +8,7 @@
 using namespace lexer;
 
 Lexer::Lexer(std::string src) {
-    this->source = std::move(src);
+    this->source = src;
 }
 
 char Lexer::next() {
@@ -150,6 +150,5 @@ void Lexer::generate() {
     for (; this->pos < this->source.size(); chk = this->next()) {
         this->make(chk);
     }
-    auto a=1;
 }
 
