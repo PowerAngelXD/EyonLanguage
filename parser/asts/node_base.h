@@ -11,14 +11,16 @@
 #define default_token_node = ast::null_token_node
 
 namespace ast {
-    /// @brief Foundation of all nodes\
-    /// @attention Other nodes must inherit this node to generate an abstract syntax tree
+    /**
+     * @brief Foundation of all nodes
+     * @attention Other nodes must inherit this node to generate an abstract syntax tree
+    */
     struct BasicNode {
         BasicNode()=default;
         BasicNode(int ln, int col);
 
         virtual std::string to_string();
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is();
 
         std::tuple<int, int> getLnCol();
     

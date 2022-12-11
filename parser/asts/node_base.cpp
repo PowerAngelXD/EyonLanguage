@@ -9,9 +9,9 @@ using namespace ast;
 // BasicNode
 BasicNode::BasicNode(int ln, int col): line(ln), column(col) {}
 
-std::string BasicNode::to_string() {}
+std::string BasicNode::to_string() { return "node"; }
 
-bool BasicNode::is(std::vector<lexer::Token> tg, int curr_pos) {}
+bool BasicNode::is() { return true; }
 
 std::tuple<int, int> BasicNode::getLnCol() {
     return {this->line, this->column};
@@ -23,5 +23,5 @@ std::string TokenNode::to_string() {
 }
 
 bool TokenNode::is(std::vector<lexer::Token> tg, int curr_pos) {
-    return true;
+    return tg[curr_pos].line != -1;
 }

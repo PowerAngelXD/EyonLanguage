@@ -18,4 +18,5 @@ bool MulOpNode::is(std::vector<lexer::Token> tg, int curr_pos) {
 BasicOpKind MulOpNode::getOpKind() {
     if (op.content.content == "/") return BasicOpKind::Div;
     else if (op.content.content == "*") return BasicOpKind::Mul;
+    return BasicOpKind::Null;
 }  

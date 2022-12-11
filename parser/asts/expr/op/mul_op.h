@@ -11,7 +11,8 @@
 
 namespace ast {
     enum BasicOpKind {
-        Plus, Sub, Mul, Div
+        Plus, Sub, Mul, Div,
+        Null // warn!
     };
 
     /// @brief Operators of multiplication and division operation (*, /)

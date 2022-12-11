@@ -7,7 +7,7 @@ using namespace ast;
 
 std::string MulExprNode::to_string() {
     std::string ret = "MulExprNode: {[" + head.to_string() + ", ";
-    for(int i = 0; i < ops.size(); i ++) {
+    for(size_t i = 0; i < ops.size(); i ++) {
         ret += ops[i].to_string() + ", ";
         ret += factors[i].to_string() + ", ";
     }
