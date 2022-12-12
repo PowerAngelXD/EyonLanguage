@@ -34,6 +34,8 @@ namespace lexer {
 
         Token(TokenKind k, std::string c, int ln, int col);
         Token()=default;
+        bool operator ==(Token tok);
+        bool operator !=(Token tok);
 
         std::string to_string() const;
     };

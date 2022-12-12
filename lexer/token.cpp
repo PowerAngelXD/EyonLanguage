@@ -38,6 +38,14 @@ bool lexer::is_symbol_char(char ch) {
 lexer::Token::Token(TokenKind k, std::string c, int ln, int col) :
     kind(k), content(c), line(ln), column(col) {}
 
+bool lexer::Token::operator ==(Token tok) {
+    return this->content == tok.content && this->kind == tok.kind;
+}
+
+bool lexer::Token::operator !=(Token tok) {
+    return this->content != tok.content && this->kind != tok.kind;
+}
+
 std::string lexer::Token::to_string() const {
     std::string ret = "Token: {";
     ret += "c: " + this->content + ", ";
