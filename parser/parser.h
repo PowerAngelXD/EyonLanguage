@@ -8,7 +8,14 @@
 
 namespace parser {
     class Parser {
-        std::vector<lexer::Token> tg;
+        lexer::TokenGroup tg;
+        size_t offset;
+    public:
+        // checker
+        //
+
+        // parser
+        //
     };
 }
 

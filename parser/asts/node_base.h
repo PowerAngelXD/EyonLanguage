@@ -37,7 +37,7 @@ namespace ast {
         bool operator ==(TokenNode token_node);
         bool operator !=(TokenNode token_node);
 
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, int curr_pos);
     };
     static TokenNode null_token_node = TokenNode(-1, -1);
 }
