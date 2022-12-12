@@ -9,8 +9,9 @@ file(GLOB SRC_FILES
         "error/*.h", "error/*.cpp",
         "lexer/*.h", "lexer/*.cpp",
         "parser/asts/expr/*.h", "parser/asts/expr/*.cpp",
-        "parser/asts/node_base.h", "parser/asts/node_base.cpp",
-        "parser/asts/expr/op/*.h", "parser/asts/expr/op/*.cpp")
+        "parser/asts/node_base.h", "parser/asts/node_base.cpp", "parser/asts/ast.h",
+        "parser/parsers/all_parser.h",
+        "parser/parsers/expr/*.h", "parser/parsers/expr/*.cpp")
 
         
 add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES} )
