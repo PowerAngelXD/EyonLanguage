@@ -39,18 +39,18 @@ lexer::Token::Token(TokenKind k, std::string c, int ln, int col) :
     kind(k), content(c), line(ln), column(col) {}
 
 bool lexer::Token::operator ==(Token tok) {
-    return this->content == tok.content && this->kind == tok.kind;
+    return content == tok.content && kind == tok.kind;
 }
 
 bool lexer::Token::operator !=(Token tok) {
-    return this->content != tok.content && this->kind != tok.kind;
+    return content != tok.content && kind != tok.kind;
 }
 
 std::string lexer::Token::to_string() const {
     std::string ret = "Token: {";
-    ret += "c: " + this->content + ", ";
-    ret += "k: " + kind_to_string(this->kind) + ", ";
-    ret += "ln: " + std::to_string(this->line) + ", ";
-    ret += "col: " + std::to_string(this->column) + "}";
+    ret += "c: " + content + ", ";
+    ret += "k: " + kind_to_string(kind) + ", ";
+    ret += "ln: " + std::to_string(line) + ", ";
+    ret += "col: " + std::to_string(column) + "}";
     return ret;
 }

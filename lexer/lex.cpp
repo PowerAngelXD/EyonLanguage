@@ -8,16 +8,16 @@
 using namespace lexer;
 
 Lexer::Lexer(std::string src) {
-    this->source = src;
+    source = src;
 }
 
 char Lexer::next() {
     char ch = source[++ pos];
     if (ch == '\n') {
-        this->column = 1;
-        this->line ++;
+        column = 1;
+        line ++;
     }
-    else this->column ++;
+    else column ++;
 
     return ch;
 }
@@ -29,19 +29,19 @@ char Lexer::peekNext() {
 void Lexer::back() {
     char ch = source[-- pos];
     if (ch == '\n') {
-        this->column = 1;
-        this->line --;
+        column = 1;
+        line --;
     }
-    else this->column --;
+    else column --;
 }
 
 Token Lexer::makeNumber() {
-    char chk = this->source[this->pos];
+    char chk = source[pos];
     if (!isdigit(chk)) {}
 
     std::string content;
     bool _dot_check = false;
-    for (; this->pos < this->source.size(); chk = this->next()) {
+    for (; pos < source.size(); chk = next()) {
         if (isdigit(chk)) content.push_back(chk);
         else if (chk == '.' && !_dot_check) {
             _dot_check = true;
@@ -49,21 +49,21 @@ Token Lexer::makeNumber() {
         }
         else if (chk == '.' && _dot_check) {
             content.push_back(chk);
-            throw lexer_error::NotCorrectNumberError(content, this->line, this->column);
+            throw lexer_error::NotCorrectNumberError(content, line, column);
         }
         else break;
     }
     back();
 
-    return {TokenKind::Number, content, this->line, this->column};
+    return {TokenKind::Number, content, line, column};
 }
 
 Token Lexer::makeIdentifier() {
-    char chk = this->source[this->pos];
+    char chk = source[pos];
     if (!isalpha(chk)) {}
 
     std::string content;
-    for(; this->pos < this->source.size(); chk = this->next()) {
+    for(; pos < source.size(); chk = next()) {
         if (isalpha(chk) || isdigit(chk) || chk == '_') content.push_back(chk);
         else break;
     }
@@ -72,13 +72,13 @@ Token Lexer::makeIdentifier() {
     return {
         is_keyword(content)?TokenKind::Keyword:TokenKind::Ident,
         content,
-        this->line,
-        this->column
+        line,
+        column
     };
 }
 
 Token Lexer::makeSymbol() {
-    char chk = this->source[this->pos];
+    char chk = source[pos];
     if (!is_symbol_char(chk)) {}
 
     std::string content;
@@ -88,10 +88,10 @@ Token Lexer::makeSymbol() {
         case '[':
         case ']':
         case '{':
-        case '}': { content.push_back(chk); this->next(); break; }
+        case '}': { content.push_back(chk); next(); break; }
     
         default: {
-            for (; this->pos < this->source.size(); chk = this->next()) {
+            for (; pos < source.size(); chk = next()) {
                 if (is_symbol_char(chk)) content.push_back(chk);
                 else break;
             }
@@ -100,55 +100,55 @@ Token Lexer::makeSymbol() {
     }
     back();
 
-    return {TokenKind::Symbol, content, this->line, this->column};
+    return {TokenKind::Symbol, content, line, column};
 }
 
 Token Lexer::makeString() {
-    char chk = this->source[this->pos];
+    char chk = source[pos];
     if (chk != '"') {}
 
     std::string content;
-    chk = this->next();
-    for (; this->pos < this->source.size(); chk = this->next()) {
-        if (chk != '"' && this->pos >= this->source.size() - 1) {
-            throw lexer_error::StringUnCloseError(content, this->line, this->column);
+    chk = next();
+    for (; pos < source.size(); chk = next()) {
+        if (chk != '"' && pos >= source.size() - 1) {
+            throw lexer_error::StringUnCloseError(content, line, column);
         }
 
         if (chk == '"') break;
         else content.push_back(chk);
     }
 
-    return {TokenKind::String, content, this->line, this->column};
+    return {TokenKind::String, content, line, column};
 }
 
 void Lexer::makeComment() {
-    char chk = this->source[this->pos];
+    char chk = source[pos];
 
     std::string debug;
-    for (; this->pos < this->source.size(); chk = this->next()) {
+    for (; pos < source.size(); chk = next()) {
         if (chk == '\n') break;
-        debug.push_back(this->next());
+        debug.push_back(next());
     }
-    this->next();
+    next();
 }
 
 void Lexer::make(char chk) {
-    if (chk == '/' && this->source[this->pos + 1] == '/') {
+    if (chk == '/' && source[pos + 1] == '/') {
         makeComment();
         return;
     }
 
-    if (isdigit(chk)) this->out.push_back(makeNumber());
-    else if (isalpha(chk) || chk == '_') this->out.push_back(makeIdentifier());
-    else if (is_symbol_char(chk)) this->out.push_back(makeSymbol());
-    else if (chk == '"') this->out.push_back(makeString());
+    if (isdigit(chk)) out.push_back(makeNumber());
+    else if (isalpha(chk) || chk == '_') out.push_back(makeIdentifier());
+    else if (is_symbol_char(chk)) out.push_back(makeSymbol());
+    else if (chk == '"') out.push_back(makeString());
     else {} // TODO: ERROR
 }
 
 void Lexer::generate() {
-    char chk = this->source[this->pos];
-    for (; this->pos < this->source.size(); chk = this->next()) {
-        this->make(chk);
+    char chk = source[pos];
+    for (; pos < source.size(); chk = next()) {
+        make(chk);
     }
 }
 

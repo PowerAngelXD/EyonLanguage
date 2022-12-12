@@ -24,7 +24,7 @@ namespace lexer {
         void back();
 
         void generate();
-        std::vector<Token> out;
+        TokenGroup out;
 
     private:
         std::string source;
