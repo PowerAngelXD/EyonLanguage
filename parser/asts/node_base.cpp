@@ -9,8 +9,6 @@ using namespace ast;
 // BasicNode
 BasicNode::BasicNode(int ln, int col): line(ln), column(col) {}
 
-std::string BasicNode::to_string() { return "node"; }
-
 bool BasicNode::is() { return true; }
 
 std::tuple<int, int> BasicNode::getLnCol() {
@@ -18,8 +16,12 @@ std::tuple<int, int> BasicNode::getLnCol() {
 }
 
 // TokenNode
-std::string TokenNode::to_string() {
-    return "TokenNode: { kind: " + lexer::kind_to_string(this->content.kind) + ", content" + content.content + "}";
+bool TokenNode::operator ==(TokenNode token_node) {
+    return this->content == token_node.content;
+}
+
+bool TokenNode::operator !=(TokenNode token_node) {
+    return this->content != token_node.content;
 }
 
 bool TokenNode::is(std::vector<lexer::Token> tg, int curr_pos) {

@@ -19,7 +19,6 @@ namespace ast {
         BasicNode()=default;
         BasicNode(int ln, int col);
 
-        virtual std::string to_string();
         static bool is();
 
         std::tuple<int, int> getLnCol();
@@ -35,8 +34,9 @@ namespace ast {
         
         // Inherit the constructor of the parent class
         using BasicNode::BasicNode;
+        bool operator ==(TokenNode token_node);
+        bool operator !=(TokenNode token_node);
 
-        std::string to_string() override;
         static bool is(std::vector<lexer::Token> tg, int curr_pos);
     };
     static TokenNode null_token_node = TokenNode(-1, -1);
