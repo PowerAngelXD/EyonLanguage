@@ -1,6 +1,6 @@
 # Eyon Programming Language
-
----
+![https://badgen.net/badge/icon/windows?icon=windows&label](https://badgen.net/badge/icon/windows?icon=windows&label)
+![https://badgen.net/badge/icon/github?icon=github&label](https://badgen.net/badge/icon/github?icon=github&label)
 
 ## Introduction
 Eyon Programming Language is an interpretive language based on Yolang and Eytion;  
