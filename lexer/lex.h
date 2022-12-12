@@ -28,7 +28,7 @@ namespace lexer {
 
     private:
         std::string source;
-        unsigned long long pos = 0;
+        size_t pos = 0;
         int column = 0, line = 1;
     };
 }
