@@ -6,14 +6,14 @@
 using namespace ast;
 
 // AddOpNode
-bool AddOpNode::is(std::vector<lexer::Token> tg, int curr_pos) {
+bool AddOpNode::is(lexer::TokenGroup tg, int curr_pos) {
     if (tg[curr_pos].content == "+"||"-") return true;
     else return false;
 }
 //
 
 // MulOpNode
-bool MulOpNode::is(std::vector<lexer::Token> tg, int curr_pos) {
+bool MulOpNode::is(lexer::TokenGroup tg, int curr_pos) {
     if (tg[curr_pos].content == "/" || "*") return true;
     else return false;
 }
@@ -26,7 +26,7 @@ BasicOpKind MulOpNode::getOpKind() {
 //
 
 // PrimExprNode
-bool PrimExprNode::is(std::vector<lexer::Token> tg, int curr_pos) {
+bool PrimExprNode::is(lexer::TokenGroup tg, int curr_pos) {
     return TokenNode::is(tg, curr_pos) || tg[curr_pos].content == "(";
 }
 
@@ -36,14 +36,14 @@ lexer::TokenKind PrimExprNode::getKind() {
 //
 
 // MulExprNode
-bool MulExprNode::is(std::vector<lexer::Token> tg, int curr_pos) {
+bool MulExprNode::is(lexer::TokenGroup tg, int curr_pos) {
     if (PrimExprNode::is(tg, curr_pos)) return true;
     else return false;
 }
 //
 
 // AddExprNode
-bool AddExprNode::is(std::vector<lexer::Token> tg, int curr_pos) {
+bool AddExprNode::is(lexer::TokenGroup tg, int curr_pos) {
     return MulExprNode::is(tg, curr_pos);
 }
 //

@@ -10,7 +10,7 @@
 
 namespace ast {
     // definitions
-    class AddExprNode;
+    struct AddExprNode;
     //
 
     enum BasicOpKind {
@@ -24,7 +24,7 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, int curr_pos);
 
         /// @brief Get operator's kind
         /// @return ast::BasicOpKind
@@ -36,7 +36,7 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, int curr_pos);
     };
 
     /// @brief Basis of all expressions
@@ -49,7 +49,7 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, int curr_pos);
 
         lexer::TokenKind getKind();
     };
@@ -61,7 +61,7 @@ namespace ast {
 
         using BasicNode::BasicNode;
         
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, int curr_pos);
     };
 
     struct AddExprNode: public BasicNode {
@@ -71,7 +71,7 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        static bool is(std::vector<lexer::Token> tg, int curr_pos);    
+        static bool is(lexer::TokenGroup tg, int curr_pos);    
     };
 }
 
