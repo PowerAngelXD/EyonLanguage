@@ -16,7 +16,6 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        std::string to_string();
         static bool is(std::vector<lexer::Token> tg, int curr_pos);    
     };
     static AddExprNode null_add_expr_node = AddExprNode(-1, -1);

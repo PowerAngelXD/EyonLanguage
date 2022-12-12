@@ -18,7 +18,6 @@ namespace ast {
 
         using BasicNode::BasicNode;
         
-        std::string to_string() override;
         static bool is(std::vector<lexer::Token> tg, int curr_pos);
     };
     static MulExprNode null_mul_expr_node = MulExprNode(-1, -1);

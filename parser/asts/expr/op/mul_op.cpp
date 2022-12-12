@@ -6,10 +6,6 @@
 
 using namespace ast;
 
-std::string MulOpNode::to_string() {
-    return "MulOpNode: {" + op.to_string() + "}";
-}
-
 bool MulOpNode::is(std::vector<lexer::Token> tg, int curr_pos) {
     if (tg[curr_pos].content == "/" || "*") return true;
     else return false;

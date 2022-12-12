@@ -21,7 +21,6 @@ namespace ast {
 
         using BasicNode::BasicNode;
 
-        std::string to_string() override;
         static bool is(std::vector<lexer::Token> tg, int curr_pos);
 
         /// @brief Get operator's kind

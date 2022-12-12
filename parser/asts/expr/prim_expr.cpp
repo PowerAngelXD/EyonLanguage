@@ -6,12 +6,8 @@
 
 using namespace ast;
 
-std::string PrimExprNode::to_string() {
-    return "PrimExprNode: {" + content.to_string() + "}";
-}
-
 bool PrimExprNode::is(std::vector<lexer::Token> tg, int curr_pos) {
-    return TokenNode::is(tg, curr_pos);
+    return TokenNode::is(tg, curr_pos) || tg[curr_pos].content == "(";
 }
 
 lexer::TokenKind PrimExprNode::getKind() {

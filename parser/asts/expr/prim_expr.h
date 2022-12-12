@@ -10,13 +10,18 @@
 #define default_prim_expr_node = ast::null_prim_expr_node
 
 namespace ast {
+    class AddExprNode;
+
     /// @brief Basis of all expressions
     struct PrimExprNode: public BasicNode {
         TokenNode content default_token_node;
 
+        TokenNode left default_token_node;
+        AddExprNode *addexpr = nullptr;
+        TokenNode right default_token_node;
+
         using BasicNode::BasicNode;
 
-        std::string to_string() override;
         static bool is(std::vector<lexer::Token> tg, int curr_pos);
 
         lexer::TokenKind getKind();
