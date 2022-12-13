@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: linux-amd64-build
+          name: linux-build
           path: ${{github.workspace}}/build
 
   build-windows:
@@ -50,5 +50,5 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: windows-amd64-build
+          name: windows-build
           path: ${{github.workspace}}/build
