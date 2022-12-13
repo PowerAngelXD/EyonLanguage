@@ -3,12 +3,11 @@
 //
 
 #include "lex.h"
-#include <utility>
 
 using namespace lexer;
 
 Lexer::Lexer(std::string src) {
-    source = src;
+    source = std::move(src);
 }
 
 char Lexer::next() {

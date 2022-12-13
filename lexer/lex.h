@@ -10,7 +10,7 @@
 namespace lexer {
     struct Lexer {
         Lexer()=default;
-        Lexer(std::string src);
+        explicit Lexer(std::string src);
 
         Token makeNumber();
         Token makeString();

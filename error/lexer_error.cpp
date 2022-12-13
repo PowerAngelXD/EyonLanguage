@@ -6,8 +6,8 @@
 
 #include <utility>
 
-lexer_error::NotCorrectNumberError::NotCorrectNumberError(std::string src, int line, int col) :
-    ErrorBasic(std::move(src),line, col) {}
+lexer_error::NotCorrectNumberError::NotCorrectNumberError(std::string src, int ln, int col) :
+    ErrorBasic(std::move(src), ln, col) {}
 
 void lexer_error::NotCorrectNumberError::printError() {
     ERROR_HEAD_DISPLAY

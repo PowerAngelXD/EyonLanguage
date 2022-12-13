@@ -8,7 +8,7 @@
 
 namespace lexer_error {
     struct NotCorrectNumberError: public error::ErrorBasic {
-        NotCorrectNumberError(std::string src, int line, int col);
+        NotCorrectNumberError(std::string src, int ln, int col);
 
         void printError() override;
     };
