@@ -34,10 +34,10 @@ namespace lexer {
 
         Token(TokenKind k, std::string c, int ln, int col);
         Token()=default;
-        bool operator ==(Token tok);
-        bool operator !=(Token tok);
+        bool operator ==(const Token& tok) const;
+        bool operator !=(const Token& tok) const;
 
-        std::string to_string() const;
+        [[nodiscard]] std::string to_string() const;
     };
     static Token null_token = {TokenKind::NullToken, "NullToken", -1, -1};
 

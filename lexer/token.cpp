@@ -4,6 +4,8 @@
 
 #include "token.h"
 
+#include <utility>
+
 // TokenKind
 std::string lexer::kind_to_string(lexer::TokenKind kind) {
     switch (kind) {
@@ -36,13 +38,13 @@ bool lexer::is_symbol_char(char ch) {
 
 // Token
 lexer::Token::Token(TokenKind k, std::string c, int ln, int col) :
-    kind(k), content(c), line(ln), column(col) {}
+    kind(k), content(std::move(c)), line(ln), column(col) {}
 
-bool lexer::Token::operator ==(Token tok) {
+bool lexer::Token::operator ==(const Token& tok) const {
     return content == tok.content && kind == tok.kind;
 }
 
-bool lexer::Token::operator !=(Token tok) {
+bool lexer::Token::operator !=(const Token& tok) const {
     return content != tok.content && kind != tok.kind;
 }
 
