@@ -72,6 +72,7 @@ AddExprParser& AddExprParser::parse() {
             temp_mul.parse();   // parse prim-expr node
 
             result->factors.push_back(temp_mul.get());
+            offset = temp_mul.getOffset();
         }
     }
 

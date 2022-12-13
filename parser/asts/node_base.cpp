@@ -23,11 +23,11 @@ TokenNode::TokenNode(lexer::Token *tok, int ln, int col):
 TokenNode::TokenNode(lexer::Token *tok):
     content(tok) {}
 
-bool TokenNode::operator ==(const TokenNode& token_node) {
+bool TokenNode::operator ==(const TokenNode& token_node) const {
     return content == token_node.content;
 }
 
-bool TokenNode::operator !=(const TokenNode& token_node) {
+bool TokenNode::operator !=(const TokenNode& token_node) const {
     return content != token_node.content;
 }
 

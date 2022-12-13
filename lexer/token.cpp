@@ -22,7 +22,7 @@ std::string lexer::kind_to_string(lexer::TokenKind kind) {
 
 // Keywords
 bool lexer::is_keyword(const std::string& str) {
-    for (auto s: keywords) {
+    for (const auto& s: keywords) {
         if (str == s) return true;
     }
     return false;

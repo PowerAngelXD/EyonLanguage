@@ -12,7 +12,7 @@ namespace parser {
         size_t offset {};
     public:
         BasicParser()=default;
-        BasicParser(lexer::TokenGroup tg, size_t o = 0);
+        explicit BasicParser(lexer::TokenGroup tg, size_t o = 0);
 
         /**
          * @brief The method of obtaining the next token with the offset unchanged
@@ -33,6 +33,8 @@ namespace parser {
          * @return lexer::Token 
          */
         lexer::Token *back();
+
+
     };
 }
 

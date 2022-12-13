@@ -34,8 +34,8 @@ namespace ast {
         TokenNode(lexer::Token *tok, int ln, int col);
         TokenNode(lexer::Token *tok);
 
-        bool operator ==(const TokenNode& token_node);
-        bool operator !=(const TokenNode& token_node);
+        bool operator ==(const TokenNode& token_node) const;
+        bool operator !=(const TokenNode& token_node) const;
 
         static bool is(lexer::TokenGroup tg, size_t curr_pos);
     };
