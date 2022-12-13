@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 project(eyon)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic -Wimplicit-fallthrough -Wsequence-point -Wswitch-default -Wswitch-unreachable -Wswitch-enum -Wstringop-truncation -Wbool-compare -Wtautological-compare -Wfloat-equal -Wshadow=global -Wpointer-arith -Wpointer-compare -Wcast-align -Wcast-qual -Wwrite-strings -Wdangling-else -Wlogical-op -Wconversion -Werror")
 
 file(GLOB SRC_FILES
         "main.cpp",
@@ -10,7 +10,7 @@ file(GLOB SRC_FILES
         "lexer/*.h", "lexer/*.cpp",
         "parser/asts/expr/*.h", "parser/asts/expr/*.cpp",
         "parser/asts/node_base.h", "parser/asts/node_base.cpp", "parser/asts/ast.h",
-        "parser/parsers/all_parser.h",
+        "parser/parsers/*.h", "parser/parsers/*.cpp"
         "parser/parsers/expr/*.h", "parser/parsers/expr/*.cpp")
 
         
