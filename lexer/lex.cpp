@@ -141,7 +141,11 @@ void Lexer::make(char chk) {
     else if (isalpha(chk) || chk == '_') out.push_back(makeIdentifier());
     else if (is_symbol_char(chk)) out.push_back(makeSymbol());
     else if (chk == '"') out.push_back(makeString());
-    else {} // TODO: ERROR
+    else {
+        std::string src = std::string();
+        src.push_back(chk);
+        throw lexer_error::IllegalSymbolError(src, line, column + 1);
+    }
 }
 
 void Lexer::generate() {
