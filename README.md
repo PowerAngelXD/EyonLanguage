@@ -22,6 +22,44 @@ Please use it with caution;
 Of course, in most cases you can use the Build version to try something new.  
 After you obtain the files of Build version, you need to replace the executable files in the original software package of Eyon (named "eyon", and the suffix depends on the system)
 
+## Demo (future)
+hello world
+```rust
+use std::IO;
+
+IO::println("hello world");
+
+let text: string = "hello world!!!";
+IO::println(text);
+```
+function
+```rust
+let io: package = use std::IO;
+// or: let io = use std::IO;
+
+func int32 add(a: int32, b: int32) {
+    return a + b;
+    // or: a + b
+}
+
+io.print(add(4, 5));
+```
+struct
+```rust
+use std::IO;
+
+struct A {
+    public mem_a: int32;
+    private mem_b: string;
+};
+impl for A {
+    string getMemB() {
+        mem_b
+        // or: return mem_b;
+    }
+};
+```
+
 ## Contributors
 ### [**PowerAngelXD**](https://github.com/PowerAngelXD)  
 **Initiator of the project**  
