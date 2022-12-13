@@ -18,6 +18,12 @@ namespace lexer_error {
 
         void printError() override;
     };
+
+    struct IllegalSymbolError: public error::ErrorBasic {
+        IllegalSymbolError(std::string src, int ln, int col);
+
+        void printError() override;
+    };
 }
 
 #endif //EYON_LEXER_ERROR_H

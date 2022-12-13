@@ -27,3 +27,16 @@ void lexer_error::StringUnCloseError::printError() {
     std::cout<<"    String text: '"<<source<<"' is not closed!"<<std::endl;
     std::cout<<"At line: "<<line<<"; column: "<<column<<std::endl;
 }
+
+//
+
+lexer_error::IllegalSymbolError::IllegalSymbolError(std::string src, int ln, int col) :
+        ErrorBasic(std::move(src), ln, col) {}
+
+void lexer_error::IllegalSymbolError::printError() {
+    ERROR_HEAD_DISPLAY
+    std::cout<<"IllegalSymbol Error"<<std::endl;
+    std::cout<<"    Illegal text: '"<<source<<"' !"<<std::endl;
+    std::cout<<"At line: "<<line<<"; column: "<<column<<std::endl;
+}
+
