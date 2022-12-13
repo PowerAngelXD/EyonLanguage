@@ -6,8 +6,6 @@
 
 #include "../node_base.h"
 
-#define init_default = nullptr;
-
 namespace ast {
     // definitions
     struct AddExprNode;
@@ -54,7 +52,7 @@ namespace ast {
         TokenNode *content = new TokenNode;
 
         TokenNode *left = new TokenNode;
-        [[maybe_unused]] AddExprNode *addexpr init_default
+        [[maybe_unused]] AddExprNode *addexpr = new AddExprNode;
         TokenNode *right = new TokenNode;
 
         using BasicNode::BasicNode;
