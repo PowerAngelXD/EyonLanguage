@@ -10,6 +10,7 @@ file(GLOB SRC_FILES
         "lexer/*.h", "lexer/*.cpp",
         "parser/asts/expr/*.h", "parser/asts/expr/*.cpp",
         "parser/asts/node_base.h", "parser/asts/node_base.cpp", "parser/asts/ast.h",
+        "parser/parser.h", "parser/parser.cpp",
         "parser/parsers/*.h", "parser/parsers/*.cpp"
         "parser/parsers/expr/*.h", "parser/parsers/expr/*.cpp")
 
