@@ -4,6 +4,8 @@
 
 #include "node_base.h"
 
+#include <utility>
+
 using namespace ast;
 
 // BasicNode
@@ -16,14 +18,19 @@ std::tuple<int, int> BasicNode::getLnCol() {
 }
 
 // TokenNode
-bool TokenNode::operator ==(TokenNode token_node) {
+TokenNode::TokenNode(lexer::Token *tok, int ln, int col):
+    BasicNode(ln, col), content(tok) {}
+TokenNode::TokenNode(lexer::Token *tok):
+    content(tok) {}
+
+bool TokenNode::operator ==(const TokenNode& token_node) {
     return content == token_node.content;
 }
 
-bool TokenNode::operator !=(TokenNode token_node) {
+bool TokenNode::operator !=(const TokenNode& token_node) {
     return content != token_node.content;
 }
 
-bool TokenNode::is(lexer::TokenGroup tg, int curr_pos) {
+bool TokenNode::is(lexer::TokenGroup tg, size_t curr_pos) {
     return tg[curr_pos].line != -1;
 }
