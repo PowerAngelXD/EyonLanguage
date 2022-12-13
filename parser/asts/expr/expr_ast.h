@@ -20,58 +20,68 @@ namespace ast {
 
     /// @brief Operators of multiplication and division operation (*, /)
     struct MulOpNode: public BasicNode {
-        TokenNode *op init_default;
+        TokenNode *op = new TokenNode;
 
         using BasicNode::BasicNode;
+        MulOpNode(TokenNode *tok, int ln, int col);
 
-        static bool is(lexer::TokenGroup tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
 
-        /// @brief Get operator's kind
-        /// @return ast::BasicOpKind
-        BasicOpKind getOpKind();
+        /**
+         * @brief Get operator's kind
+         * @return ast::BasicOpKind
+         */
+        [[nodiscard]] BasicOpKind getOpKind() const;
     };
 
     struct AddOpNode: public BasicNode {
-        TokenNode *op init_default;
+        TokenNode *op = new TokenNode;
 
         using BasicNode::BasicNode;
+        AddOpNode(TokenNode *tok, int ln, int col);
 
-        static bool is(lexer::TokenGroup tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
+
+        /**
+         * @brief Get operator's kind
+         * @return ast::BasicOpKind
+         */
+        [[nodiscard]] BasicOpKind getOpKind() const;
     };
 
     /// @brief Basis of all expressions
     struct PrimExprNode: public BasicNode {
-        TokenNode *content init_default;
+        TokenNode *content = new TokenNode;
 
-        TokenNode *left init_default;
-        AddExprNode *addexpr init_default;
-        TokenNode *right init_default;
+        TokenNode *left = new TokenNode;
+        [[maybe_unused]] AddExprNode *addexpr init_default
+        TokenNode *right = new TokenNode;
 
         using BasicNode::BasicNode;
 
-        static bool is(lexer::TokenGroup tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
 
-        lexer::TokenKind getKind();
+        [[nodiscard]] lexer::TokenKind getKind() const;
     };
 
     struct MulExprNode: public BasicNode {
-        PrimExprNode *head init_default;
+        PrimExprNode *head = new PrimExprNode;
         std::vector<PrimExprNode*> factors;
         std::vector<MulOpNode*> ops;
 
         using BasicNode::BasicNode;
         
-        static bool is(lexer::TokenGroup tg, int curr_pos);
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
     };
 
     struct AddExprNode: public BasicNode {
-        MulExprNode *head init_default;
+        MulExprNode *head = new MulExprNode;
         std::vector<MulExprNode*> factors;
         std::vector<AddOpNode*> ops;
 
         using BasicNode::BasicNode;
 
-        static bool is(lexer::TokenGroup tg, int curr_pos);    
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
     };
 }
 
