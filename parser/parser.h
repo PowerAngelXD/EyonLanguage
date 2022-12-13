@@ -4,18 +4,16 @@
 #ifndef EYON_PARSER_H
 #define EYON_PARSER_H
 
-#include "asts/ast.h"
+#include "parsers/all_parser.h"
 
 namespace parser {
-    class Parser {
-        lexer::TokenGroup tg;
-        size_t offset;
+    class Parser: public BasicParser{
+        AddExprParser tempParser = AddExprParser(token_group, offset);
     public:
-        // checker
-        //
+        using BasicParser::BasicParser;
 
-        // parser
-        //
+        void parse();
+        AddExprNode get();
     };
 }
 
