@@ -2,7 +2,7 @@
 #include "parser/parsers/expr/expr_parser.h"
 
 int main() {
-    lexer::Lexer lexer = lexer::Lexer("1+2");
+    lexer::Lexer lexer = lexer::Lexer("1+2~");
 
     try {
         lexer.generate();
@@ -13,5 +13,6 @@ int main() {
     }
     catch (lexer_error::NotCorrectNumberError& e) { e.printError(); }
     catch (lexer_error::StringUnCloseError& e) { e.printError(); }
+    catch (lexer_error::IllegalSymbolError& e) { e.printError(); }
     return 0;
 }
