@@ -52,7 +52,7 @@ namespace ast {
         TokenNode *content = new TokenNode;
 
         TokenNode *left = new TokenNode;
-        [[maybe_unused]] AddExprNode *addexpr = new AddExprNode;
+        AddExprNode *addexpr = nullptr;
         TokenNode *right = new TokenNode;
 
         using BasicNode::BasicNode;
