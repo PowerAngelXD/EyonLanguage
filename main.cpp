@@ -1,13 +1,13 @@
 #include "lexer/lex.h"
-#include "parser/parsers/expr/expr_parser.h"
+#include "parser/parser.h"
 
 int main() {
-    lexer::Lexer lexer = lexer::Lexer("1+2~");
+    lexer::Lexer lexer = lexer::Lexer("1+2*3");
 
     try {
         lexer.generate();
-        parser::AddExprParser addexpr(lexer.out);
-        addexpr.parse();
+        parser::Parser parser(lexer.out, 0);
+        parser.parse();
         auto a=1;
         std::cout<<a<<std::endl;
     }
