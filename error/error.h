@@ -17,6 +17,7 @@ protected:
         int line = 0, column = 0;
     public:
         ErrorBasic(std::string src, int ln, int col);
+        using std::exception::what;
 
         std::string what();
         std::tuple<int, int> getLineCol();
