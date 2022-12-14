@@ -6,9 +6,9 @@
 using namespace parser;
 
 void Parser::parse() {
-    if (!AddExprNode::is(token_group, offset)) {} // WILL ERROR
+    if (!WholeExprNode::is(token_group, offset)) {} // WILL ERROR
 
     tempParser.parse();
 }
 
-AddExprNode Parser::get() { return *tempParser.get(); }
+WholeExprNode Parser::get() { return *tempParser.get(); }

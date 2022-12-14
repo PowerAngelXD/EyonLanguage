@@ -8,12 +8,12 @@
 
 namespace parser {
     class Parser: public BasicParser{
-        AddExprParser tempParser = AddExprParser(token_group, offset);
+        WholeExprParser tempParser = WholeExprParser(token_group, offset);
     public:
         using BasicParser::BasicParser;
 
         void parse();
-        AddExprNode get();
+        WholeExprNode get();
     };
 }
 

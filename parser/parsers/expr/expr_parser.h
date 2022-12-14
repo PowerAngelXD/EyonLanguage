@@ -38,6 +38,16 @@ namespace parser {
         AddExprNode *get();
         size_t getOffset();
     };
+
+    class WholeExprParser: public BasicParser {
+        WholeExprNode *result = new WholeExprNode;
+    public:
+        using BasicParser::BasicParser;
+
+        WholeExprParser& parse();
+        WholeExprNode *get();
+        size_t getOffset();
+    };
 }
 
 #endif // !EYON_EXPR_PARSER_H

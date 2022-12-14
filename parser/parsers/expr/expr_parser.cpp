@@ -14,7 +14,8 @@ PrimExprParser& PrimExprParser::parse() {
 
     // Check if it is a '('
     if (head_token->content == "(") {
-        
+        result->expr = new WholeExprNode;
+
     }
     else {
         *result->content = TokenNode(head_token, result->content->content->line, result->content->content->column);
@@ -82,4 +83,18 @@ AddExprParser& AddExprParser::parse() {
 AddExprNode *AddExprParser::get() { return result; }
 
 size_t AddExprParser::getOffset() { return offset; }
+//
+
+// WholeExprParser
+WholeExprParser& WholeExprParser::parse() {
+    if (AddExprNode::is(token_group, offset)) {
+        auto temp_parser = AddExprParser(token_group, offset);
+        offset = temp_parser.parse().getOffset();
+        result->addexpr = temp_parser.get();
+    }
+
+    return *this;
+}
+WholeExprNode *WholeExprParser::get() { return result; }
+size_t WholeExprParser::getOffset() { return offset; }
 //
