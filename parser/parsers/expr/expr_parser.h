@@ -5,6 +5,7 @@
 #define EYON_EXPR_PARSER_H
 
 #include "../parser_basic.h"
+#include "../../../error/parser_error.h"
 
 using namespace ast;
 
