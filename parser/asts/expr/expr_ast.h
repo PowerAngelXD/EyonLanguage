@@ -9,6 +9,7 @@
 namespace ast {
     // definitions
     struct AddExprNode;
+    struct WholeExprNode;
     //
 
     enum BasicOpKind {
@@ -52,7 +53,7 @@ namespace ast {
         TokenNode *content = new TokenNode;
 
         TokenNode *left = new TokenNode;
-        AddExprNode *addexpr = nullptr;
+        WholeExprNode *expr = nullptr;
         TokenNode *right = new TokenNode;
 
         using BasicNode::BasicNode;
@@ -76,6 +77,14 @@ namespace ast {
         MulExprNode *head = new MulExprNode;
         std::vector<MulExprNode*> factors;
         std::vector<AddOpNode*> ops;
+
+        using BasicNode::BasicNode;
+
+        static bool is(lexer::TokenGroup tg, size_t curr_pos);
+    };
+
+    struct WholeExprNode: public BasicNode {
+        AddExprNode* addexpr = new AddExprNode;
 
         using BasicNode::BasicNode;
 

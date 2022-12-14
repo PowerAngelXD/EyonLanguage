@@ -7,6 +7,13 @@
 
 using namespace ast;
 
+// WholeExprNode
+bool WholeExprNode::is(lexer::TokenGroup tg, size_t curr_pos) {
+    if (AddExprNode::is(std::move(tg), curr_pos)) return true;
+    else return false;
+}
+//
+
 // AddOpNode
 AddOpNode::AddOpNode(TokenNode *tok, int ln, int col):
         BasicNode(ln, col), op(tok) {}
