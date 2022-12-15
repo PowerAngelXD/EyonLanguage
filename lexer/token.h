@@ -21,7 +21,7 @@ namespace lexer {
     bool is_symbol_char(char ch);
 
     enum TokenKind {
-        Number, String, Ident,
+        Number, String, Ident, Bool,
         Keyword, Symbol, Eof, NullToken
     };
     std::string kind_to_string(TokenKind kind);
