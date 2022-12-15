@@ -12,7 +12,9 @@ file(GLOB SRC_FILES
         "parser/asts/node_base.h", "parser/asts/node_base.cpp", "parser/asts/ast.h",
         "parser/parser.h", "parser/parser.cpp",
         "parser/parsers/*.h", "parser/parsers/*.cpp"
-        "parser/parsers/expr/*.h", "parser/parsers/expr/*.cpp")
+        "parser/parsers/expr/*.h", "parser/parsers/expr/*.cpp",
+        "coder/basic_coder.h", "coder/basic_coder.cpp"
+        "coder/expr/expr_coder.h", "coder/expr/expr_coder.cpp")
 
         
 add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES} )
