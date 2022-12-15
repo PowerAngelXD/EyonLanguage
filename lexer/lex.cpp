@@ -68,6 +68,18 @@ Token Lexer::makeIdentifier() {
     }
     back();
 
+    if (content == "true" || content == "false") {
+        if (content == "true") content ="1";
+        else if (content == "false") content = "0";
+
+        return {
+            TokenKind::Bool,
+            content,
+            line,
+            column
+        };
+    }
+
     return {
         is_keyword(content)?TokenKind::Keyword:TokenKind::Ident,
         content,

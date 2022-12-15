@@ -14,6 +14,7 @@ std::string lexer::kind_to_string(lexer::TokenKind kind) {
         case Ident: return "Identifier"; break;
         case Keyword: return "Keyword"; break;
         case Symbol: return "Symbol"; break;
+        case Bool: return "Bool"; break;
         case Eof: return "Eof"; break;
         case NullToken: return "NullToken"; break;
         default: return "null";
